@@ -4,6 +4,7 @@
   "description": "Koa CRUD app using mongo, with live-reload and tests running per file save via gulp",
   "main": "server.js",
   "scripts": {
+    "start": "node --harmony-generators `which gulp`",
     "test": "node --harmony-generators `which gulp` test-once"
   },
   "repository": {

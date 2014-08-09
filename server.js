@@ -1,5 +1,6 @@
 var koa = require('koa'),
-  logger = require('logger');
+  logger = require('koa-logger'),
+  route = require('koa-route');
 
 var app = module.exports = koa(),
   port = process.env.PORT || 8000,
@@ -9,9 +10,9 @@ if ('test' == env) { port = 9354; }
 
 app.use(logger());
 
-app.use(route.get('/', function() {
-  console.log('hit');
-});
+app.use(route.get('/', function*() {
+  this.body = 'Hello, world!';
+}));
 
 if (!module.parent) {
   app.listen(port);
