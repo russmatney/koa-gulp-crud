@@ -8,4 +8,11 @@ describe('/ endpoint', function() {
     var res = yield request.get('/').expect(200).end();
     expect(res.text).to.equal('Hello, world!');
   });
+
+  it('should accept an object', function*() {
+    var object = {'bar': 'foo', 'fizz': 'buzz'};
+    var res = yield request.post('/').send(object).expect(201).end();
+    expect(res.body.bar).to.equal('foo');
+    expect(res.body.fizz).to.equal('buzz');
+  });
 });
