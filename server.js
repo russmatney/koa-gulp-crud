@@ -13,6 +13,14 @@ app.use(logger());
 app.use(route.get('/', function*() {
   this.body = 'Hello, world!';
 }));
+var parse = require('co-body');
+app.use(route.post('/', function*() {
+  var object = yield parse(this);
+  this.created_at = new Date;
+  //insert into db
+  this.status = 201;
+  this.body = object;
+}));
 
 if (!module.parent) {
   app.listen(port);
