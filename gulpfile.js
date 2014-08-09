@@ -3,7 +3,8 @@
 var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   mocha = require('gulp-mocha-co'),
-  exit = require('gulp-exit');
+  exit = require('gulp-exit'),
+  watch = require('gulp-watch');
 
 gulp.task('nodemon', function () {
   nodemon({
@@ -13,6 +14,16 @@ gulp.task('nodemon', function () {
   }).on('restart');
 });
 
+gulp.task('watch', function() {
+  gulp.src(['*.js', 'test/*.js'], {read: true})
+    .pipe(watch({ emit: 'all' }, function (files) {
+      process.env.NODE_ENV = 'test';
+      files.pipe(mocha({reporter: 'nyan', bail: false}))
+        .on('error', function(err) {
+        });
+    }));
+});
+
 gulp.task('test-once', function() {
   process.env.NODE_ENV = 'test';
   gulp.src(['test/*.js'])
@@ -20,4 +31,4 @@ gulp.task('test-once', function() {
     .pipe(exit());
 });
 
-gulp.task('default', ['nodemon']);
+gulp.task('default', ['nodemon', 'watch']);
