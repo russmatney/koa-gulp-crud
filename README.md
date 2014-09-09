@@ -9,6 +9,6 @@ A simple Koa example app.
 
 #TODO:
 
-- Tutorial blog posts
+- Tutorial blog posts (Draft is [here](https://github.com/russmatney/russmatney.github.io/blob/master/_posts/techsposure/2014-08-17-koa-gulp-crud.md))
 - Isolate db calls from controllers
 - Save data to database
