@@ -16,5 +16,5 @@ A simple [Koa](http://koajs.com/) example app.
 
 #Resources
 
-- [An awesome series from David Walsh](http://davidwalsh.name/es6-generators)
+- [An awesome series on ECMA 6 JS generators from David Walsh](http://davidwalsh.name/es6-generators)
 - [Koa examples](https://github.com/koajs/examples)
