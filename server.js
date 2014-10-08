@@ -6,8 +6,6 @@ var app = module.exports = koa(),
   port = process.env.PORT || 8000,
   env = process.env.NODE_ENV || 'development';
 
-if ('test' == env) { port = 9354; }
-
 app.use(logger());
 
 var endpoint = require('./api/endpoint.js');
