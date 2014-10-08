@@ -15,20 +15,21 @@ gulp.task('nodemon', function () {
 });
 
 gulp.task('watch', function() {
-  gulp.src(['*.js', 'api/*.js', 'test/*.js'], {read: true})
-    .pipe(watch({ emit: 'all' }, function (files) {
-      process.env.NODE_ENV = 'test';
-      files.pipe(mocha({reporter: 'nyan', bail: false}))
-        .on('error', function(err) {
-        });
-    }));
+  gulp.watch(
+    ['*.js', 'api/*.js', 'test/*.js'],
+    {read: true},
+    ['mocha']
+  )
 });
 
-gulp.task('test-once', function() {
+gulp.task('mocha', function() {
   process.env.NODE_ENV = 'test';
   gulp.src(['test/*.js'])
     .pipe(mocha({reporter: 'nyan'}))
-    .pipe(exit());
+});
+
+gulp.task('test-once', function() {
+  gulp.tasks.mocha.fn().pipe(exit());
 });
 
 gulp.task('default', ['nodemon', 'watch']);
