@@ -7,6 +7,9 @@ A simple [Koa](http://koajs.com/) example app.
 - Endpoint-level tests via `mocha` and `co-supertest`
 - gulpfile running and refreshing server and tests on file-save via `gulp`
 
+I wrote a blog post walking through the constuction of this app
+[here](http://russmatney.com/techsposure/2014/10/04/basic-koa-api-gulp-supertest/).
+
 #TODO:
 
 - Isolate db calls from controllers
